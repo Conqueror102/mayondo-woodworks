@@ -134,7 +134,7 @@ export const mockProducts: Product[] = [
   },
 ];
 
-export const mockWoodProducts: WoodProduct[] = [
+export const woodProducts: WoodProduct[] = [
   {
     id: 'w1',
     name: 'Mahogany Timber',
@@ -142,7 +142,7 @@ export const mockWoodProducts: WoodProduct[] = [
     supplier: 'Timber Masters Ltd',
     costPrice: 2500,
     sellingPrice: 3500,
-    stockQuantity: 500,
+    quantity: 500,
     unit: 'per foot',
     dateReceived: '2024-01-15',
     description: 'Premium quality mahogany timber',
@@ -154,7 +154,7 @@ export const mockWoodProducts: WoodProduct[] = [
     supplier: 'Wood Suppliers Co',
     costPrice: 800,
     sellingPrice: 1200,
-    stockQuantity: 200,
+    quantity: 200,
     unit: 'per piece',
     dateReceived: '2024-01-20',
     description: 'Treated pine poles for construction',
@@ -166,7 +166,7 @@ export const mockWoodProducts: WoodProduct[] = [
     supplier: 'Premium Woods',
     costPrice: 3000,
     sellingPrice: 4200,
-    stockQuantity: 300,
+    quantity: 300,
     unit: 'per foot',
     dateReceived: '2024-01-18',
     description: 'High-quality oak timber',
@@ -178,10 +178,32 @@ export const mockWoodProducts: WoodProduct[] = [
     supplier: 'Cedar Works',
     costPrice: 1800,
     sellingPrice: 2500,
-    stockQuantity: 150,
+    quantity: 150,
     unit: 'per plank',
     dateReceived: '2024-01-22',
     description: 'Aromatic cedar planks',
+  },
+  {
+    id: 'w5',
+    name: 'Eucalyptus Poles',
+    type: 'poles',
+    supplier: 'Uganda Timber Co.',
+    costPrice: 15000,
+    sellingPrice: 25000,
+    quantity: 8,
+    unit: 'pieces',
+    dateReceived: '2024-01-20',
+  },
+  {
+    id: 'w6',
+    name: 'Teak Hardwood',
+    type: 'hardwood',
+    supplier: 'Forest Products Ltd',
+    costPrice: 95000,
+    sellingPrice: 140000,
+    quantity: 0,
+    unit: 'cubic meters',
+    dateReceived: '2024-01-18',
   },
 ];
 
