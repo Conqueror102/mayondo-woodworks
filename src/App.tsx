@@ -8,6 +8,11 @@ import AppLayout from "@/components/layouts/AppLayout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Showroom from "./pages/Showroom";
+import Warehouse from "./pages/Warehouse";
+import Sales from "./pages/Sales";
+import Customers from "./pages/Customers";
+import Suppliers from "./pages/Suppliers";
+import Reports from "./pages/Reports";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,11 +50,11 @@ const App = () => (
             >
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/showroom" element={<Showroom />} />
-              <Route path="/warehouse" element={<div className="text-2xl font-poppins">Warehouse - Coming Soon</div>} />
-              <Route path="/sales" element={<div className="text-2xl font-poppins">Sales - Coming Soon</div>} />
-              <Route path="/customers" element={<div className="text-2xl font-poppins">Customers - Coming Soon</div>} />
-              <Route path="/suppliers" element={<div className="text-2xl font-poppins">Suppliers - Coming Soon</div>} />
-              <Route path="/reports" element={<div className="text-2xl font-poppins">Reports - Coming Soon</div>} />
+              <Route path="/warehouse" element={<Warehouse />} />
+              <Route path="/sales" element={<Sales />} />
+              <Route path="/customers" element={<Customers />} />
+              <Route path="/suppliers" element={<Suppliers />} />
+              <Route path="/reports" element={<Reports />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
