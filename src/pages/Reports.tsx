@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { DatePickerWithRange } from '@/components/ui/date-picker-range';
+import { Input } from '@/components/ui/input';
 import { FileText, Download, TrendingUp, DollarSign, Package, Users, Calendar, BarChart3, PieChart, Activity } from 'lucide-react';
 import { mockSales, mockProducts, woodProducts } from '@/lib/mockData';
 import { useToast } from '@/hooks/use-toast';
@@ -42,8 +43,6 @@ const DatePickerWithRange = ({ date, onDateChange }: { date: DateRange | undefin
   );
 };
 
-import { Input } from '@/components/ui/input';
-
 const Reports: React.FC = () => {
   const { toast } = useToast();
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
@@ -64,7 +63,7 @@ const Reports: React.FC = () => {
   const totalOrders = mockSales.length;
   const avgOrderValue = totalRevenue / totalOrders;
   const totalStockValue = mockProducts.reduce((sum, p) => sum + (p.price * p.stockQuantity), 0) +
-                          woodProducts.reduce((sum, p) => sum + (p.sellingPrice * p.quantity), 0);
+                          woodProducts.reduce((sum, p) => sum + (p.sellingPrice * p.stockQuantity), 0);
 
   // Group sales by date for chart data
   const salesByDate = mockSales.reduce((acc, sale) => {

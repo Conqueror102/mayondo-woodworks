@@ -14,7 +14,7 @@ import {
   ArrowUpRight,
   ArrowDownRight
 } from 'lucide-react';
-import { mockSales, mockProducts, mockWoodProducts } from '@/lib/mockData';
+import { mockSales, mockProducts, woodProducts } from '@/lib/mockData';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
   // Calculate stats
   const todaySales = mockSales.filter(s => s.date === new Date().toISOString().split('T')[0]);
   const totalSalesAmount = mockSales.reduce((sum, sale) => sum + sale.total, 0);
-  const lowStockProducts = [...mockProducts, ...mockWoodProducts].filter(p => p.stockQuantity < 5);
+  const lowStockProducts = [...mockProducts, ...woodProducts].filter(p => p.stockQuantity < 5);
   
   const topProducts = [
     { name: 'Royal Oak King Bed', sales: 12, trend: 'up' },
@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
     },
     {
       title: 'Total Products',
-      value: (mockProducts.length + mockWoodProducts.length).toString(),
+      value: (mockProducts.length + woodProducts.length).toString(),
       description: 'In inventory',
       icon: Package,
       trend: 'Stable',

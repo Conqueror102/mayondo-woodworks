@@ -27,9 +27,9 @@ const Warehouse: React.FC = () => {
     const matchesType = typeFilter === 'all' || product.type === typeFilter;
     const matchesSupplier = supplierFilter === 'all' || product.supplier === supplierFilter;
     const matchesAvailability = availabilityFilter === 'all' ||
-      (availabilityFilter === 'available' && product.quantity > 0) ||
-      (availabilityFilter === 'lowStock' && product.quantity > 0 && product.quantity <= 10) ||
-      (availabilityFilter === 'outOfStock' && product.quantity === 0);
+      (availabilityFilter === 'available' && product.stockQuantity > 0) ||
+      (availabilityFilter === 'lowStock' && product.stockQuantity > 0 && product.stockQuantity <= 10) ||
+      (availabilityFilter === 'outOfStock' && product.stockQuantity === 0);
 
     return matchesSearch && matchesType && matchesSupplier && matchesAvailability;
   });
@@ -53,9 +53,9 @@ const Warehouse: React.FC = () => {
     return { label: 'In Stock', variant: 'success' as const };
   };
 
-  const totalValue = filteredProducts.reduce((sum, product) => sum + (product.sellingPrice * product.quantity), 0);
-  const lowStockItems = woodProducts.filter(p => p.quantity > 0 && p.quantity <= 10).length;
-  const outOfStockItems = woodProducts.filter(p => p.quantity === 0).length;
+  const totalValue = filteredProducts.reduce((sum, product) => sum + (product.sellingPrice * product.stockQuantity), 0);
+  const lowStockItems = woodProducts.filter(p => p.stockQuantity > 0 && p.stockQuantity <= 10).length;
+  const outOfStockItems = woodProducts.filter(p => p.stockQuantity === 0).length;
 
   return (
     <div className="space-y-6">
@@ -166,7 +166,7 @@ const Warehouse: React.FC = () => {
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredProducts.map((product) => {
-          const stockStatus = getStockStatus(product.quantity);
+          const stockStatus = getStockStatus(product.stockQuantity);
           return (
             <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -192,7 +192,7 @@ const Warehouse: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-muted-foreground">Quantity:</span>
-                    <p className="font-medium">{product.quantity} {product.unit}</p>
+                    <p className="font-medium">{product.stockQuantity} {product.unit}</p>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Cost Price:</span>
@@ -217,7 +217,7 @@ const Warehouse: React.FC = () => {
                         className="flex-1"
                         onClick={() => {
                           setSelectedProduct(product);
-                          setUpdateQuantity(product.quantity);
+                          setUpdateQuantity(product.stockQuantity);
                         }}
                       >
                         <Edit2 className="h-4 w-4 mr-1" />
